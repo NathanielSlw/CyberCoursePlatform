@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Course: {{ purchased_course.course.title }} - Chapter {{ chapter.chapter_number }}{% endblock %}
+
+{% block content %}
+    <h2>Chapter {{ chapter.chapter_number }} - {{ chapter.title }}</h2>
+    <p>{{ chapter.content }}</p>
+
+    <!-- Bouton pour marquer le chapitre comme terminé -->
+    {% if not chapter_progress.completed %}
+        {% if chapter.chapter_number == purchased_course.course.chapters|length %}
+            <!-- Si c'est le dernier chapitre, afficher un message spécifique -->
+            <form action="{{ url_for('mark_chapter_completed', purchased_course_id=purchased_course.id, chapter_id=chapter.id) }}" method="POST">
+                <button type="submit" class="btn btn-success">Mark as completed the course</button>
+            </form>
+        {% else %}
+            <!-- Sinon, afficher le bouton normal -->
+            <form action="{{ url_for('mark_chapter_completed', purchased_course_id=purchased_course.id, chapter_id=chapter.id) }}" method="POST">
+                <button type="submit" class="btn btn-success">Mark as Completed</button>
+            </form>
+        {% endif %}
+    {% else %}
+        <p>Chapter Completed!</p>
+    {% endif %}
+
+    <!-- Bouton pour revenir au chapitre précédent -->
+    {% if chapter.chapter_number > 1 %}
+        <a href="{{ url_for('course_progress', purchased_course_id=purchased_course.id, chapter_number=chapter.chapter_number - 1) }}" class="btn btn-secondary mt-3">Previous Chapter</a>
+    {% endif %}
+
+    <!-- Bouton pour aller au chapitre suivant, ou message de fin -->
+    {% if chapter.chapter_number < purchased_course.course.chapters|length %}
+        <a href="{{ url_for('course_progress', purchased_course_id=purchased_course.id, chapter_number=chapter.chapter_number + 1) }}" class="btn btn-secondary mt-3">Next Chapter</a>
+    {% else %}
+        <!-- Vérification si tous les chapitres sont terminés -->
+        {% if purchased_course.progress == purchased_course.course.chapters|length %}
+            <p>You have completed all chapters of this course!</p>
+            <a href="{{ url_for('my_courses') }}" class="btn btn-secondary">Back to My Courses</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}
