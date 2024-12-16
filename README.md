@@ -4,11 +4,15 @@ Ce projet est une **plateforme de cours en ligne** centrée sur la cybersécurit
 
 Le projet utilise Flask pour le backend, SQLite pour la base de données, et Bootstrap pour un design épuré et responsive.
 
+---
+
 Sommaire :
 * Liens 
 * Lancer notre projet
 * Fonctionnalités 
 * Structure du projet 
+
+---
 
 ### Liens 
 * Lien des slides de présentation : [Slides de présentation](./Slides_Presentation_Projet.pptx)
