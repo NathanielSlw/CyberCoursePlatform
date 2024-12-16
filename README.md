@@ -1,6 +1,8 @@
 ## Online Cybersecurity Course Platform
 
-Ce projet est une application web minimaliste pour une plateforme de cours en ligne en cybersécurité. Elle permet aux utilisateurs de s'inscrire, de se connecter, d'ajouter et de visualiser des cours. Le projet utilise Flask pour le backend, SQLite pour la base de données, et Bootstrap pour le design front-end.
+Ce projet est une **plateforme de cours en ligne** centrée sur la cybersécurité, permettant aux utilisateurs de s'inscrire, de naviguer dans un catalogue de cours, de suivre leurs progrès, et de générer des certificats après avoir complété les cours. Il offre également une fonctionnalité de panier pour acheter des cours.
+
+Le projet utilise Flask pour le backend, SQLite pour la base de données, et Bootstrap pour un design épuré et responsive.
 
 Sommaire :
 * Liens 
